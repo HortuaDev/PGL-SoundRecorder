@@ -7,16 +7,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-
-interface Props {
-  canAskAgain: boolean;
-  onRetry: () => void;
-}
+import { NoPermissionScreenProps } from "../types/audio.types";
+import { colors, spacing, radius, typography } from "../styles/global";
 
 export default function NoPermissionScreen({
   canAskAgain,
   onRetry,
-}: Props): React.JSX.Element {
+}: NoPermissionScreenProps): React.JSX.Element {
   const handleOpenSettings = (): void => {
     if (Platform.OS === "ios") {
       Linking.openURL("app-settings:");
@@ -28,15 +25,12 @@ export default function NoPermissionScreen({
   return (
     <View style={styles.container}>
       <Text style={styles.icon}>🎙️</Text>
-
       <Text style={styles.title}>Permiso de micrófono requerido</Text>
-
       <Text style={styles.description}>
         {canAskAgain
           ? "Esta app necesita acceso al micrófono para poder grabar audio. Por favor, acepta el permiso para continuar."
           : "Has denegado el permiso demasiadas veces. Para usar la app debes activarlo manualmente desde los ajustes de tu dispositivo."}
       </Text>
-
       {canAskAgain ? (
         <TouchableOpacity
           style={styles.button}
@@ -61,40 +55,40 @@ export default function NoPermissionScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1a1a2e",
+    backgroundColor: colors.background,
     alignItems: "center",
     justifyContent: "center",
     padding: 32,
   },
   icon: {
     fontSize: 64,
-    marginBottom: 24,
+    marginBottom: spacing.xxl,
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#fff",
+    color: colors.textPrimary,
     textAlign: "center",
-    marginBottom: 16,
+    marginBottom: spacing.lg,
   },
   description: {
-    fontSize: 14,
-    color: "#aaa",
+    fontSize: typography.body.fontSize,
+    color: colors.textSecondary,
     textAlign: "center",
     lineHeight: 22,
     marginBottom: 32,
   },
   button: {
-    backgroundColor: "#e74c3c",
+    backgroundColor: colors.primary,
     paddingVertical: 14,
     paddingHorizontal: 32,
-    borderRadius: 50,
+    borderRadius: radius.lg,
   },
   settingsButton: {
-    backgroundColor: "#2980b9",
+    backgroundColor: colors.info,
   },
   buttonText: {
-    color: "#fff",
+    color: colors.textPrimary,
     fontWeight: "bold",
     fontSize: 16,
   },
