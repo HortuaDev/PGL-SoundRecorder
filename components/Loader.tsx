@@ -1,44 +1,51 @@
-import React, { useEffect } from "react";
-import { StyleSheet, View } from "react-native";
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withRepeat,
-  withTiming,
-} from "react-native-reanimated";
+import React, { useEffect, useRef } from "react";
+import { Animated, Easing, StyleSheet, View } from "react-native";
+import { colors, spacing } from "../styles/global";
 
 export default function Loader(): React.JSX.Element {
-  const scale = useSharedValue<number>(1);
-  const opacity = useSharedValue<number>(1);
+  const scale = useRef(new Animated.Value(1)).current;
+  const opacity = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    scale.value = withRepeat(
-      withTiming(1.6, {
-        duration: 600,
-        easing: Easing.inOut(Easing.ease),
-      }),
-      -1,
-      true,
-    );
-    opacity.value = withRepeat(
-      withTiming(0.3, {
-        duration: 600,
-        easing: Easing.inOut(Easing.ease),
-      }),
-      -1,
-      true,
-    );
+    Animated.loop(
+      Animated.parallel([
+        Animated.sequence([
+          Animated.timing(scale, {
+            toValue: 1.6,
+            duration: 600,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true,
+          }),
+          Animated.timing(scale, {
+            toValue: 1,
+            duration: 600,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true,
+          }),
+        ]),
+        Animated.sequence([
+          Animated.timing(opacity, {
+            toValue: 0.3,
+            duration: 600,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true,
+          }),
+          Animated.timing(opacity, {
+            toValue: 1,
+            duration: 600,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true,
+          }),
+        ]),
+      ]),
+    ).start();
   }, []);
-
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
-    opacity: opacity.value,
-  }));
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.circle, animatedStyle]} />
+      <Animated.View
+        style={[styles.circle, { transform: [{ scale }], opacity }]}
+      />
     </View>
   );
 }
@@ -47,12 +54,12 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    padding: 20,
+    padding: spacing.xl,
   },
   circle: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: "#e74c3c",
+    backgroundColor: colors.primary,
   },
 });
