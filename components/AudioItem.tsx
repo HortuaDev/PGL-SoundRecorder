@@ -1,41 +1,45 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { AudioRecord } from "../services/storageService";
-
-interface Props {
-  audio: AudioRecord;
-  isPlaying: boolean;
-  onPlay: (uri: string) => void;
-  onDelete: (id: string) => void;
-}
+import { AudioItemProps } from "../types/audio.types";
+import { colors, spacing, radius, typography } from "../styles/global";
 
 export default function AudioItem({
   audio,
   isPlaying,
+  isDisabled,
   onPlay,
   onDelete,
-}: Props): React.JSX.Element {
+}: AudioItemProps): React.JSX.Element {
   return (
-    <View style={[styles.container, isPlaying && styles.playing]}>
-      <Text style={styles.date}>🗓 {audio.date}</Text>
-
+    <View
+      style={[
+        styles.container,
+        isPlaying && styles.playing,
+        isDisabled && styles.disabled,
+      ]}
+    >
+      <Text style={styles.date}>{audio.date}</Text>
       {isPlaying && <Text style={styles.playingLabel}>▶ Reproduciendo...</Text>}
-
       <View style={styles.actions}>
         <TouchableOpacity
-          style={[styles.playBtn, isPlaying && styles.playBtnActive]}
+          style={[
+            styles.playBtn,
+            isPlaying && styles.playBtnActive,
+            isDisabled && styles.playBtnDisabled,
+          ]}
           onPress={() => onPlay(audio.uri)}
+          disabled={isDisabled}
+          activeOpacity={0.8}
         >
-          <Text style={styles.playText}>
+          <Text style={[styles.playText, isDisabled && styles.textDisabled]}>
             {isPlaying ? "↺ Repetir" : "▶ Reproducir"}
           </Text>
         </TouchableOpacity>
-
         <TouchableOpacity
           style={styles.deleteBtn}
           onPress={() => onDelete(audio.id)}
         >
-          <Text style={styles.deleteText}>🗑 Eliminar</Text>
+          <Text style={styles.deleteText}>Eliminar</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -44,55 +48,62 @@ export default function AudioItem({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#16213e",
-    padding: 16,
-    borderRadius: 12,
-    marginBottom: 10,
+    backgroundColor: colors.surface,
+    padding: spacing.lg,
+    borderRadius: radius.md,
+    marginBottom: spacing.sm,
     borderLeftWidth: 3,
-    borderLeftColor: "#e74c3c",
+    borderLeftColor: colors.borderDefault,
   },
   playing: {
-    borderLeftColor: "#2ecc71",
-    backgroundColor: "#1a2e1a",
+    borderLeftColor: colors.borderActive,
+    backgroundColor: colors.surfaceActive,
+  },
+  disabled: {
+    opacity: 0.45,
   },
   date: {
-    color: "#aaa",
-    fontSize: 12,
-    marginBottom: 6,
+    color: colors.textSecondary,
+    fontSize: typography.small.fontSize,
+    marginBottom: spacing.xs + 2,
   },
   playingLabel: {
-    color: "#2ecc71",
-    fontSize: 12,
+    color: colors.success,
+    fontSize: typography.small.fontSize,
     fontWeight: "bold",
-    marginBottom: 8,
+    marginBottom: spacing.sm,
   },
   actions: {
     flexDirection: "row",
-    gap: 12,
+    gap: spacing.md,
   },
   playBtn: {
-    backgroundColor: "#2980b9",
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 8,
+    backgroundColor: colors.info,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    borderRadius: radius.sm,
   },
   playBtnActive: {
-    backgroundColor: "#27ae60",
+    backgroundColor: colors.success,
+  },
+  playBtnDisabled: {
+    backgroundColor: colors.disabled,
   },
   playText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 13,
+    color: colors.textPrimary,
+    ...typography.button,
+  },
+  textDisabled: {
+    color: colors.textDisabled,
   },
   deleteBtn: {
-    backgroundColor: "#922b21",
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 8,
+    backgroundColor: colors.danger,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    borderRadius: radius.sm,
   },
   deleteText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 13,
+    color: colors.textPrimary,
+    ...typography.button,
   },
 });
