@@ -1,12 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const STORAGE_KEY = 'recorded_audios';
+import { AudioRecord } from "../types/audio.types";
 
-export interface AudioRecord {
-  id: string;
-  uri: string;
-  date: string;
-}
+const STORAGE_KEY = 'recorded_audios';
 
 const storageService = {
 
@@ -50,14 +46,14 @@ const storageService = {
   },
 
   clearAudios: async (): Promise<AudioRecord[]> => {
-    try {
-      await AsyncStorage.removeItem(STORAGE_KEY);
-      return [];
-    } catch (error) {
-      console.error('Error clearing audios:', error);
-      return [];
-    }
-  },
+  try {
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+    return [];
+  } catch (error) {
+    console.error('Error clearing audios:', error);
+    return [];
+  }
+},
 
 };
 
