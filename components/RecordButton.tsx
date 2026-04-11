@@ -1,45 +1,50 @@
-import React, { useEffect } from "react";
-import { Platform, StyleSheet, Text, TouchableOpacity } from "react-native";
-import Animated, {
+import React, { useEffect, useRef } from "react";
+import {
+  Animated,
   Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withRepeat,
-  withTiming,
-} from "react-native-reanimated";
-
-interface Props {
-  isRecording: boolean;
-  onPress: () => void;
-}
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
+import { RecordButtonProps } from "../types/audio.types";
+import { colors, radius, typography, shadows } from "../styles/global";
 
 export default function RecordButton({
   isRecording,
   onPress,
-}: Props): React.JSX.Element {
-  const scale = useSharedValue<number>(1);
+}: RecordButtonProps): React.JSX.Element {
+  const scale = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     if (isRecording) {
-      scale.value = withRepeat(
-        withTiming(1.08, {
-          duration: 500,
-          easing: Easing.inOut(Easing.ease),
-        }),
-        -1,
-        true,
-      );
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(scale, {
+            toValue: 1.08,
+            duration: 500,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true,
+          }),
+          Animated.timing(scale, {
+            toValue: 1,
+            duration: 500,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true,
+          }),
+        ]),
+      ).start();
     } else {
-      scale.value = withTiming(1, { duration: 200 });
+      scale.stopAnimation();
+      Animated.timing(scale, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
     }
   }, [isRecording]);
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
-  }));
-
   return (
-    <Animated.View style={animatedStyle}>
+    <Animated.View style={{ transform: [{ scale }] }}>
       <TouchableOpacity
         style={[styles.button, isRecording && styles.recording]}
         onPress={onPress}
@@ -55,31 +60,19 @@ export default function RecordButton({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#e74c3c",
+    backgroundColor: colors.primary,
     paddingVertical: 18,
     paddingHorizontal: 40,
-    borderRadius: 50,
+    borderRadius: radius.lg,
     alignItems: "center",
     marginBottom: 20,
-    ...Platform.select({
-      ios: {
-        shadowColor: "#e74c3c",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.4,
-        shadowRadius: 8,
-      },
-      android: {
-        elevation: 6,
-      },
-    }),
+    ...shadows,
   },
   recording: {
-    backgroundColor: "#c0392b",
+    backgroundColor: colors.primaryDark,
   },
   text: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold",
-    letterSpacing: 0.5,
+    color: colors.textPrimary,
+    ...typography.buttonLarge,
   },
 });
