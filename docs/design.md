@@ -11,17 +11,15 @@ verde para indicar reproducción activa.
 
 ## Pantalla principal en reposo
 
-### Pantalla principal sin grabaciones
-
-<div align="left">
-  <img src="../assets/pantalla-principal-sin-grabaciones.png" width="200" alt="Pantalla principal sin grabaciones" />
-</div>
+| (Diseño)                                                                                                                                          | Pantalla principal sin grabaciones                                                                                                           |
+| :------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| <div align="left"><img src="../assets/figma-pantalla-principal-sin-grabaciones.png" width="200" alt="Pantalla principal sin grabaciones" /></div> | <div align="right"><img src="../assets/pantalla-principal-sin-grabaciones.png" width="200" alt="Pantalla principal sin grabaciones" /></div> |
 
 ### Pantalla principal con grabaciones en lista
 
-<div align="left">
-  <img src="../assets/pantalla-principal-con-grabaciones.png" width="200" alt="Pantalla principal sin grabaciones" />
-</div>
+| (Diseño)                                                                                                                                          | Pantalla principal con grabaciones                                                                                                           |
+| :------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| <div align="left"><img src="../assets/figma-pantalla-principal-con-grabaciones.png" width="200" alt="Pantalla principal con grabaciones" /></div> | <div align="right"><img src="../assets/pantalla-principal-con-grabaciones.png" width="200" alt="Pantalla principal con grabaciones" /></div> |
 
 ## Elementos de la interfaz
 
@@ -37,15 +35,15 @@ según el estado de grabación.
 
 ### Botón de grabación en estado "inicial" (Antes de grabar)
 
-<div align="left">
-  <img src="../assets/boton-grabacion-iniciar-grabacion.png" width="200" alt="Pantalla principal sin grabaciones" />
-</div>
+| (Diseño)                                                                                                                                           | Botón de grabación inicial                                                                                                                    |
+| :------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| <div align="left"><img src="../assets/figma-boton-grabacion-iniciar-grabacion.png" width="200" alt="Botón de grabación iniciar grabación" /></div> | <div align="right"><img src="../assets/boton-grabacion-iniciar-grabacion.png" width="200" alt="Botón de grabación iniciar grabación" /></div> |
 
 ### Botón de grabación en estado "activo" (Durante la grabación)
 
-<div align="left">
-  <img src="../assets/boton-grabacion-grabando.png" width="200" alt="Pantalla principal sin grabaciones" />
-</div>
+| (Diseño)                                                                                                                         | Botón de grabación activo                                                                                                   |
+| :------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
+| <div align="left"><img src="../assets/figma-boton-grabacion-grabando.png" width="200" alt="Botón de grabación grabando" /></div> | <div align="right"><img src="../assets/boton-grabacion-grabando.png" width="200" alt="Botón de grabación grabando" /></div> |
 
 ### Indicador de grabación y carga (Loader)
 
@@ -59,15 +57,15 @@ y su opacidad (1 a 0.3) en bucle infinito.
 
 ### Loader visible durante una grabación activa
 
-<div align="left">
-  <img src="../assets/loader-grabando.png" width="100" alt="Pantalla principal sin grabaciones" />
-</div>
+| (Diseño)                                                                                                    | Loader grabando                                                                                        |
+| :---------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------- |
+| <div align="left"><img src="../assets/figma-loader-grabando.png" width="100" alt="Loader grabando" /></div> | <div align="right"><img src="../assets/loader-grabando.png" width="100" alt="Loader grabando" /></div> |
 
 ### Pantalla de carga inicial (Durante la grabación)
 
-<div align="left">
-  <img src="../assets/pantalla-inicial-durante-grabacion.png" width="200" alt="Pantalla principal sin grabaciones" />
-</div>
+| (Diseño)                                                                                                                                          | Pantalla inicial durante grabación                                                                                                           |
+| :------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| <div align="left"><img src="../assets/figma-pantalla-inicial-durante-grabacion.png" width="200" alt="Pantalla inicial durante grabación" /></div> | <div align="right"><img src="../assets/pantalla-inicial-durante-grabacion.png" width="200" alt="Pantalla inicial durante grabación" /></div> |
 
 ### Contador de tiempo
 
@@ -88,9 +86,9 @@ Cada elemento de la lista muestra la siguiente información y controles:
 
 ### Lista con un audio en reproducción y otros deshabilitados
 
-<div align="left">
-  <img src="../assets/grabacion-reproduciendose.png" width="200" alt="Pantalla principal sin grabaciones" />
-</div>
+| (Diseño)                                                                                                                        | Grabación reproduciéndose                                                                                                  |
+| :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------- |
+| <div align="left"><img src="../assets/figma-grabacion-reproduciendose.png" width="200" alt="Grabación reproduciéndose" /></div> | <div align="right"><img src="../assets/grabacion-reproduciendose.png" width="200" alt="Grabación reproduciéndose" /></div> |
 
 ### Botón eliminar todas las grabaciones
 
@@ -100,9 +98,9 @@ Cada elemento de la lista muestra la siguiente información y controles:
 
 ### Botón eliminar todas las grabaciones
 
-<div align="left">
-  <img src="../assets/boton-eliminar-todas-las-grabaciones.png" width="200" alt="Pantalla principal sin grabaciones" />
-</div>
+| (Diseño)                                                                                                                                              | Botón eliminar todas las grabaciones                                                                                                             |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| <div align="left"><img src="../assets/figma-boton-eliminar-todas-las-grabaciones.png" width="200" alt="Botón eliminar todas las grabaciones" /></div> | <div align="right"><img src="../assets/boton-eliminar-todas-las-grabaciones.png" width="200" alt="Botón eliminar todas las grabaciones" /></div> |
 
 ### Diálogo de confirmación de eliminación
 
@@ -122,9 +120,9 @@ Incluye dos variantes según el estado del permiso:
 
 ### Pantalla de permisos denegados con botón de solicitar
 
-<div align="left">
-  <img src="../assets/pedir-permisos-al-rechazar-por-primera-vez.png" width="200" alt="Pantalla principal sin grabaciones" />
-</div>
+| (Diseño)                                                                                                                                                          | Pedir permisos al rechazar por primera vez                                                                                                                   |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <div align="left"><img src="../assets/figma-pedir-permisos-al-rechazar-por-primera-vez.png" width="200" alt="Pedir permisos al rechazar por primera vez" /></div> | <div align="right"><img src="../assets/pedir-permisos-al-rechazar-por-primera-vez.png" width="200" alt="Pedir permisos al rechazar por primera vez" /></div> |
 
 ### Pantalla de permisos denegados con botón de abrir ajustes
 
