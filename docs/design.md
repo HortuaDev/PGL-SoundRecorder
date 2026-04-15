@@ -150,4 +150,10 @@ reutilizables en todos los componentes.
 | `textSecondary` | `#aaa`    | Fechas y textos secundarios         |
 | `textDisabled`  | `#999`    | Texto en estado deshabilitado       |
 
+## Demo en la aplicacion en funcionamiento
+
+<div align="center">
+  <img src="../assets/app_video.gif" width="250" alt="Demo de la aplicación" />
+</div>
+
 [← Volver al inicio](../README.md)
