@@ -31,10 +31,16 @@ npx expo start
 
 Pulsa `a` para abrir en el emulador de Android o escanea el QR con Expo Go.
 
-## Documentación
+## Documentación por ejercicios
 
-- [Diseño de la pantalla](./docs/design.md)
-- [Implementación técnica](./docs/implementation.md)
+| Ejercicio                           | Descripción                                |
+| ----------------------------------- | ------------------------------------------ |
+| [Ejercicio 1](./docs/ejercicio1.md) | Diseño de la pantalla de grabación         |
+| [Ejercicio 2](./docs/ejercicio2.md) | Implementación de la aplicación            |
+| [Ejercicio 3](./docs/ejercicio3.md) | Solicitud de permisos de grabación         |
+| [Ejercicio 4](./docs/ejercicio4.md) | Persistencia de grabaciones entre sesiones |
+| [Ejercicio 5](./docs/ejercicio5.md) | Componente de carga propio (Loader)        |
+| [Ejercicio 6](./docs/ejercicio6.md) | Animación propia en el botón de grabación  |
 
 ## Tecnologías utilizadas
 
@@ -42,7 +48,7 @@ Pulsa `a` para abrir en el emulador de Android o escanea el QR con Expo Go.
 - expo-audio
 - AsyncStorage
 - react-native-safe-area-context
-- Animated API de React Native :
+- Animated API de React Native
 
 > **Nota:** Inicialmente se planteó usar `react-native-reanimated`, pero causaba
 > errores de compatibilidad con la versión de Expo y la Nueva Arquitectura de
